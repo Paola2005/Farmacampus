@@ -1,0 +1,15 @@
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\bin\Debug\net7.0\Infrastuctura.deps.json
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\bin\Debug\net7.0\Infrastuctura.dll
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\bin\Debug\net7.0\Infrastuctura.pdb
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\bin\Debug\net7.0\Core.dll
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\bin\Debug\net7.0\Core.pdb
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\obj\Debug\net7.0\Infrastuctura.csproj.AssemblyReference.cache
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\obj\Debug\net7.0\Infrastuctura.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\obj\Debug\net7.0\Infrastuctura.AssemblyInfoInputs.cache
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\obj\Debug\net7.0\Infrastuctura.AssemblyInfo.cs
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\obj\Debug\net7.0\Infrastuctura.csproj.CoreCompileInputs.cache
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\obj\Debug\net7.0\Infrastuctura.csproj.CopyComplete
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\obj\Debug\net7.0\Infrastuctura.dll
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\obj\Debug\net7.0\refint\Infrastuctura.dll
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\obj\Debug\net7.0\Infrastuctura.pdb
+C:\Users\APM02-44\netcore\tiendacampus\Infrastuctura\obj\Debug\net7.0\ref\Infrastuctura.dll
