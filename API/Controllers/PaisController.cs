@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities;
 using Infrastuctura.Data;
+using Infrastuctura.UnityOfWork;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,18 +12,35 @@ namespace API.Controllers;
 
 public class PaisController : BaseController
 {
-    private readonly TiendaCampusContext _context;
+    private readonly UnitOfwork _unitofwork;
 
-    public PaisController(TiendaCampusContext context)
+    public PaisController(UnitOfwork unitofwork)
     {
-        _context = context;
+        _unitofwork = unitofwork;
     }
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<IEnumerable<Pais>>> Get()
     {
-        var nameVar = await _context.Paises.ToListAsync();
+        var nameVar = await _unitofwork.Paises.GetAllAsync();
         return Ok(nameVar);
     }
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<Pais>> Get(int id)
+    {
+        var pais=await _unitofwork.Paises.GetByIdAsync(id);
+        if(pais==null)
+        {
+            return NotFound();
+        }
+        return pais;
+    }
+
+    /* [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)] */
 }
