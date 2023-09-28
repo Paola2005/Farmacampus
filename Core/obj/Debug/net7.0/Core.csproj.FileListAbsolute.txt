@@ -9,3 +9,14 @@ C:\Users\APM02-44\netcore\tiendacampus\Core\obj\Debug\net7.0\Core.dll
 C:\Users\APM02-44\netcore\tiendacampus\Core\obj\Debug\net7.0\refint\Core.dll
 C:\Users\APM02-44\netcore\tiendacampus\Core\obj\Debug\net7.0\Core.pdb
 C:\Users\APM02-44\netcore\tiendacampus\Core\obj\Debug\net7.0\ref\Core.dll
+c:\Users\velas\tiendacampus\Core\bin\Debug\net7.0\Core.deps.json
+C:\Users\velas\tiendacampus\Core\bin\Debug\net7.0\Core.dll
+C:\Users\velas\tiendacampus\Core\bin\Debug\net7.0\Core.pdb
+C:\Users\velas\tiendacampus\Core\obj\Debug\net7.0\Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\velas\tiendacampus\Core\obj\Debug\net7.0\Core.AssemblyInfoInputs.cache
+C:\Users\velas\tiendacampus\Core\obj\Debug\net7.0\Core.AssemblyInfo.cs
+C:\Users\velas\tiendacampus\Core\obj\Debug\net7.0\Core.csproj.CoreCompileInputs.cache
+C:\Users\velas\tiendacampus\Core\obj\Debug\net7.0\Core.dll
+C:\Users\velas\tiendacampus\Core\obj\Debug\net7.0\refint\Core.dll
+C:\Users\velas\tiendacampus\Core\obj\Debug\net7.0\Core.pdb
+c:\Users\velas\tiendacampus\Core\obj\Debug\net7.0\ref\Core.dll
