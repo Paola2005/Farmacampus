@@ -26,7 +26,7 @@ public class PaisController : BaseController
         var nameVar = await _unitofwork.Paises.GetAllAsync();
         return Ok(nameVar);
     }
-    [HttpGet]
+    [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -40,7 +40,16 @@ public class PaisController : BaseController
         return pais;
     }
 
-    /* [HttpPost]
+    [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)] */
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<Pais>> Post(Pais pais){
+        this._unitofwork.Paises.Add(pais);
+        await _unitofwork.SaveAsync();
+        if (pais == null)
+        {
+            return BadRequest();
+        }
+        return CreatedAtAction(nameof(Post),new {id= pais.Id}, pais);
+    }
 }
