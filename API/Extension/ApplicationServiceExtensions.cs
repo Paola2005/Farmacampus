@@ -18,6 +18,6 @@ namespace API.Extension;
         });
         public static void AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<UnitOfwork>();
+            services.AddScoped<IUnitOfWork, UnitOfwork>();
         }
     }

@@ -5,7 +5,7 @@
 namespace Infrastuctura.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class tienda : Migration
+    public partial class Extenciones : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

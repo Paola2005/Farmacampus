@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastuctura.Data.Migrations
 {
     [DbContext(typeof(TiendaCampusContext))]
-    [Migration("20230928220625_tienda")]
-    partial class tienda
+    [Migration("20230929165603_Extenciones")]
+    partial class Extenciones
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
