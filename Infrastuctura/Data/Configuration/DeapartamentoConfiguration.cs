@@ -18,7 +18,7 @@ namespace Infrastuctura.Data.Configuration;
 
         builder.HasOne(p=>p.Paises)
         .WithMany(p=>p.Departamentos)
-        .HasForeignKey(p=>p.IdpaisFK);
+        .HasForeignKey(p=>p.Idpais);
 
 
 

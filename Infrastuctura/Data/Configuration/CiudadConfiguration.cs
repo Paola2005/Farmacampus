@@ -18,7 +18,7 @@ namespace Infrastuctura.Data.Configuration;
 
         builder.HasOne(p=>p.Departamentos)
         .WithMany(p=>p.Ciudades)
-        .HasForeignKey(p=>p.IdDepartamentoFK);
+        .HasForeignKey(p=>p.IdDepartamento);
         }
 
 

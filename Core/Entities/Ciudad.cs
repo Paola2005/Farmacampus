@@ -9,7 +9,8 @@ namespace Core.Entities
     {
 
         public string Nombre { get; set; }
-        public int IdDepartamentoFK { get; set; }
+        public int IdDepartamento { get; set; }
         public Departamento Departamentos { get; set; }
+        public ICollection<UbicacionPersona> UbicacionPersonas { get; set; }
     }
 }

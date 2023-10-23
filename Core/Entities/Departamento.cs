@@ -10,10 +10,8 @@ namespace Core.Entities
 
 
         public string Nombre { get; set; }
-        public int IdpaisFK { get; set; }
-
+        public int Idpais { get; set; }
         public Pais Paises { get; set; }
-
         public ICollection<Ciudad> Ciudades { get; set; }
     }
 }
