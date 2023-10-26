@@ -220,6 +220,15 @@ namespace Infrastuctura.UnityOfWork
             }
         }
 
+        public ITipoMovimientoInventario TipoMovimiento {
+            get{
+                if(_tipomovimientoinventario==null)
+                {
+                    _tipomovimientoinventario=new TipoMovimientoInventarioRepository(_context);
+                }
+                return _tipomovimientoinventario;
+            }
+        }
         public void Dispose()
         {
             _context.Dispose();

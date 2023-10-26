@@ -2,99 +2,91 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Dtos;
+using AutoMapper;
 using Core.Entities;
 using Core.Interfaces;
-using Infrastuctura.Data;
-using Infrastuctura.UnityOfWork;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
-
-public class PaisController : BaseController
-{
-    private readonly IUnitOfWork _unitofwork;
-
-    public PaisController(IUnitOfWork unitofwork)
+public class PaisController: BaseController
     {
-        _unitofwork = unitofwork;
-    }
-    [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<Pais>>> Get()
-    {
-        var nameVar = await _unitofwork.Paises.GetAllAsync();
-        return Ok(nameVar);
-    }
-    [HttpGet("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<Pais>> Get(int id)
-    {
-        var pais = await _unitofwork.Paises.GetByIdAsync(id);
-        if (pais == null)
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
+
+        public PaisController(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            return NotFound();
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
-        return Ok(pais);
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<Pais>>> Get()
+        {
+            var entidades = await _unitOfWork.Paises.GetAllAsync();
+            return _mapper.Map<List<Pais>>(entidades);
+        }
+
+        [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<PaisDto>> Get(int id)
+        {
+            var entidad = await _unitOfWork.Paises.GetByIdAsync(id);
+            if(entidad == null)
+            {
+                return NotFound();
+            }
+            return _mapper.Map<PaisDto>(entidad);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<Pais>> Post(PaisDto PaisDto)
+        {
+            var entidad = _mapper.Map<Pais>(PaisDto);
+            this._unitOfWork.Paises.Add(entidad);
+            await _unitOfWork.SaveAsync();
+            if(entidad == null)
+            {
+                return BadRequest();
+            }
+            PaisDto.Id = entidad.Id;
+            return CreatedAtAction(nameof(Post), new {id = PaisDto.Id}, PaisDto);
+        }
+
+        [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<PaisDto>> Put(int id, [FromBody] PaisDto PaisDto)
+        {
+            if(PaisDto == null)
+            {
+                return NotFound();
+            }
+            var entidades = _mapper.Map<Pais>(PaisDto);
+            _unitOfWork.Paises.Update(entidades);
+            await _unitOfWork.SaveAsync();
+            return PaisDto;
+        }
+
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var entidad = await _unitOfWork.Paises.GetByIdAsync(id);
+            if(entidad == null)
+            {
+                return NotFound();
+            }
+            _unitOfWork.Paises.Remove(entidad);
+            await _unitOfWork.SaveAsync();
+            return NoContent();
+        }
     }
-
-    [HttpPost]
-    [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Pais>> Post(Pais pais)
-    {
-        this._unitofwork.Paises.Add(pais);
-        await _unitofwork.SaveAsync();
-        if (pais == null)
-        {
-            return BadRequest();
-        }
-        return CreatedAtAction(nameof(Post), new { id = pais.Id }, pais);
-    }
-
-    [HttpPut("{id}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-
-    public async Task<ActionResult<Pais>> Put(int id, [FromBody] Pais pais)
-    {
-        /* var paisTemp = await _unitofwork.Paises.GetByIdAsync(id); */
-        if (pais.Id == 0)
-        {
-            pais.Id = id;
-        }
-        if (pais.Id != id)
-        {
-            return BadRequest();
-        }
-        if (pais == null)
-        {
-            return NotFound();
-        }
-        _unitofwork.Paises.Update(pais);
-        await _unitofwork.SaveAsync();
-        return Ok(pais);
-    }
-
-    [HttpDelete("{id}")]
-    [ProducesResponseType(StatusCodes.Status201Created)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<Pais>> Delete(int id)
-    {
-        var pais = await _unitofwork.Paises.GetByIdAsync(id);
-        if (pais == null)
-        {
-            return NotFound();
-        }
-        _unitofwork.Paises.Remove(pais);
-        await _unitofwork.SaveAsync();
-        return NoContent();
-
-    }
-
-
-}

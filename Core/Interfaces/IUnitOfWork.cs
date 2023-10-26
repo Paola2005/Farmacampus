@@ -25,6 +25,7 @@ namespace Core.Interfaces
         ITipoDocumento TiposDocumentos { get;}
         ITipoPersona TiposPersonas { get;}
         IUbicacionPersona UbicacionesPersonas { get;}
+        ITipoMovimientoInventario TipoMovimiento { get;}
         Task<int>SaveAsync();
     }
 }

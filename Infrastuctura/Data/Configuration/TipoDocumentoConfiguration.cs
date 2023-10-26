@@ -9,12 +9,12 @@ namespace Infrastructure.Data.Configuration
         public void Configure(EntityTypeBuilder<TipoDocumento> builder)
         {
             
-            builder.ToTable("tipodocumento");
+            builder.ToTable("TipoDocumento");
+        builder.HasKey(e=>e.Id);
+        builder.Property(e=>e.Id);
 
-            builder.HasKey(e => e.Id);
-            builder.Property(e => e.Id);
-
-            builder.Property(e => e.Descripcion).IsRequired().HasMaxLength(50);
+        builder.Property(p=>p.Nombre)
+        .HasMaxLength(50);
             
         }
     }

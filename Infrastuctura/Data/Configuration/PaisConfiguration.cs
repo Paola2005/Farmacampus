@@ -7,7 +7,7 @@ public class PaisConfiguration : IEntityTypeConfiguration<Pais>
 {
     public void Configure(EntityTypeBuilder<Pais> builder)
     {
-        builder.ToTable("pais");
+        builder.ToTable("Pais");
         builder.HasKey(e=>e.Id);
         builder.Property(e=>e.Id);
 

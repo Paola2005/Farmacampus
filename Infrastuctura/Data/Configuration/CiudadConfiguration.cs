@@ -8,7 +8,7 @@ namespace Infrastuctura.Data.Configuration;
     {
         public void Configure(EntityTypeBuilder<Ciudad> builder)
         {
-            builder.ToTable("ciudad");
+            builder.ToTable("Ciudad");
         builder.HasKey(e=>e.Id);
         builder.Property(e=>e.Id);
 
